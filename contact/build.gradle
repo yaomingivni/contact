@@ -34,4 +34,6 @@ dependencies {
 	compile("com.h2database:h2")
 	compileOnly("org.springframework.boot:spring-boot-devtools")
 	testCompile("junit:junit")
+	testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+	
 }
