@@ -1,25 +1,57 @@
 package model;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import org.springframework.stereotype.Controller;
 
-@Controller
+@Entity
 public class AddContact {
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	@NotNull
-	@Size(min=1, max=50)
 	private String nom;
 	
 	@NotNull
-	@Size(min=1, max=50)
 	private String prenom;
 	
 	@NotNull
-	private int numero;
+	private String numero;
+	
+	
+
+	protected AddContact() {
+		this.setNom("");
+		this.setNumero("");
+		this.setPrenom("");
+	}
 
 	
+	public AddContact(String nom, String prenom, String numero) {
+		this.setNom(nom);
+		this.setNumero(numero);
+		this.setPrenom(prenom);
+	}
+	
+	 @Override
+	    public String toString() {
+	        return String.format(
+	                "Contact[id=%d, nom='%s', prenom='%s']",
+	                id, nom, prenom);
+	    }
 	
 	public String getNom() {
 		return nom;
@@ -37,11 +69,11 @@ public class AddContact {
 		this.prenom = prenom;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	

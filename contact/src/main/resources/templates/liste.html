@@ -1,0 +1,27 @@
+<html>
+<h1>Liste des contacts</h1>
+<div th:if="${not #lists.isEmpty(Personne)}">
+            <table>
+               <tr>
+					<td> Nom :
+					</td>
+					<td> Prenom : 
+					</td>
+					<td> Numero :
+					</td>
+               </tr>
+               <tr th:each="Personne : ${Personne}">
+              	 <td th:text="${Personne.getNom()}"></td>
+              	 <td th:text="${Personne.getPrenom()}"></td>
+              	 <td th:text="${Personne.getNumero()}"></td> 
+              	 <td><form action="#" th:action="@{/modifier/} +${Personne.getId()}" method="post"><button type="submit">Modifier</button></form></td> 
+              	 <td><form action="#" th:action="@{/supprimer/} +${Personne.getId()}" method="post"><button type="submit">Supprimer</button></form></td> 
+            	<input type="hidden" value="${Personne.getId()}"/>
+               </tr>
+            </table>
+            
+</div>
+<form action="ajouter" method="get" >
+<button type = "submit">Ajouter Contact</button>
+</form>
+</html>

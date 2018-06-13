@@ -1,21 +1,28 @@
 <html>
     <body>
-        <form action="#" th:action="@{/}" th:object="${contactForm}" method="post">
+        <form action="#" th:action="@{/tryAjouter}" th:object="${contactForm}" method="post">
+         <input type="hidden" th:field="*{id}"/>
             <table>
                 <tr>
                     <td>Name:</td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                    <td><input type="text" th:field="*{nom}" /></td>
+                    <td th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Name Error</td>
+                </tr>
+                 <tr>
+                    <td>Prenom:</td>
+                    <td><input type="text" th:field="*{prenom}" /></td>
+                    <td th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Prenom Error</td>
                 </tr>
                 <tr>
-                    <td>Age:</td>
-                    <td><input type="text" th:field="*{age}" /></td>
-                    <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+                    <td>Numero:</td>
+                    <td><input type="text" th:field="*{numero}" /></td>
+                    <td th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">Numero Error</td>
                 </tr>
                 <tr>
                     <td><button type="submit">Submit</button></td>
                 </tr>
             </table>
+
         </form>
     </body>
 </html>
